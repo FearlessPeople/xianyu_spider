@@ -64,11 +64,11 @@
 ```shell
 电脑USB连接安卓设备；
 
-1. 查看设备是否成功连接：`adb devices`
+1. 查看设备是否成功连接：adb devices
    出现的真实设备名称在device前即连接成功；
-2. 进入手机shell环境：`adb shell`
-3. 赋予设备权限：`chmod 775 /data/local/tmp/atx-agent`
-4. 后台启动atx-agent： `/data/local/tmp/atx-agent server -d`
+2. 进入手机shell环境：adb shell
+3. 赋予设备权限：chmod 775 /data/local/tmp/atx-agent
+4. 后台启动atx-agent： /data/local/tmp/atx-agent server -d
 ```
 
 ## 错误：device显示unauthorized
