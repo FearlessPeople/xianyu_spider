@@ -45,8 +45,6 @@ d_displayWidth = dinfo['displayWidth']
 
 package_name = "com.taobao.idlefish"
 activity_name = ".maincontainer.activity.MainActivity"
-# 向上滑动最大次数
-MAX_PAGE = 5
 
 
 class TimeUtil:
@@ -137,6 +135,7 @@ def to_excel(data_list):
                           target_file=output_file)
 
     wb.save(filename=output_file)
+    return output_file
 
 
 def swipe(startx, starty, endx, endy):
@@ -183,23 +182,37 @@ def save_image(pil_image):
     return img_path
 
 
+def remove_unicode(text):
+    special_sequences = '\\xef\\xbf\\xbc'
+    text = text.replace('\n', '')
+    result_str = ''
+    for ch in text:
+        if special_sequences not in str(ch.encode()):
+            result_str += ch
+    return result_str
+
+
 def get_list_data():
     result = []
     TimeUtil.random_sleep()
+    # view_list = d.xpath(
+    #     '//android.widget.ScrollView/android.view.View[2]/android.view.View[1]/android.widget.ImageView[1]/android.view.View[1]/android.view.View[1]/*').all()
     view_list = d.xpath(
-        '//android.widget.ScrollView/android.view.View[2]/android.view.View[1]/android.widget.ImageView[1]/android.view.View[1]/android.view.View[1]/*').all()
+        '//android.widget.ScrollView//android.view.View').all()
     if len(view_list) > 0:
         for el in view_list:
             item_info = el.info
-            el_description = str(item_info['contentDescription']).replace('\n', '')
+            el_description = remove_unicode(str(item_info['contentDescription']))
             el_text = str(item_info['text']).replace('\n', '')
             if el_description != "" and el_description != "筛选":
-                img_path = save_image(el.screenshot())
-                result.append({
-                    'title': el_description,
-                    'amount': get_amount(el_description),
-                    'img': img_path
-                })
+                amount = get_amount(el_description)
+                if amount is not None and amount != '':
+                    img_path = save_image(el.screenshot())
+                    result.append({
+                        'title': el_description,
+                        'amount': amount,
+                        'img': img_path
+                    })
 
     return result
 
@@ -225,7 +238,7 @@ def main_exit():
     d.app_stop(package_name)
 
 
-def main(keyword):
+def main(keyword, max_page):
     usage()
     try:
         del_temp_file()
@@ -236,15 +249,15 @@ def main(keyword):
 
         logger.info(f"正在获取【{keyword}】关键字信息...")
         open_page_by_keyword(keyword)
-        for i in range(MAX_PAGE):
+        for i in range(max_page):
+            logger.info(f"正在滑动[{i}/{max_page}]...")
             list_data = get_list_data()
             if list_data:
-                for c in list_data:
-                    if c is not None and c != "":
-                        outputs.append(c)
-                swipe_up()
+                outputs.extend(list_data)
+            swipe_up()
 
-        to_excel(outputs)
+        output_file = to_excel(outputs)
+        logger.info(f"运行完成，文件路径{output_file}")
     except Exception as e:
         print(e)
         logger.error("程序运行异常:" + str(e.args[0]))
@@ -253,4 +266,6 @@ def main(keyword):
 
 
 if __name__ == '__main__':
-    main(keyword='餐饮券')
+    keyword = '餐饮券'
+    max_page = 5  # 向上滑动次数
+    main(keyword=keyword, max_page=max_page)
