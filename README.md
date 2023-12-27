@@ -1,29 +1,29 @@
+<h1 align="center">闲鱼APP数据爬虫</h1>
+
+<div align="center">
+
+[特性](#特性) | [技术架构](#技术架构) | [快速开始](#快速开始) | [使用说明](#使用说明) | [免责声明](#免责声明) | [常见问题](#常见问题)
+
+🚀「闲鱼APP数据爬虫」一个基于uiautomator2的闲鱼APP爬虫项目，严禁将所得数据商用！ 本项目只供学习使用，作者不承担任何由此带来的法律风险和损失！如果本项目对你有用，点个Start，方便回顾知识~
 <p align="center">
     <a target="_blank" href="https://www.python.org/downloads/release/python-3810/"><img src="https://img.shields.io/badge/Python-3.x-blue.svg" /></a>
     <a target="_blank" href='https://github.com/fangzheng0518/xianyu_spider'><img src="https://img.shields.io/github/stars/fangzheng0518/xianyu_spider.svg?style=social"/></a>
     <a target="_blank" href="LICENSE"><img src="https://img.shields.io/:license-GPLv3-blue.svg"></a>
 </p>
+</div>
 
-# 闲鱼APP数据爬取
-
-[简介](#简介) | [特性](#特性) | [技术架构](#技术架构) | [快速开始](#快速开始) | [使用说明](#使用说明) | [免责声明](#免责声明) | [常见问题](#常见问题)
-
-# 简介
-
-一个基于uiautomator2的闲鱼APP爬虫项目，严禁将所得数据商用！ 本项目只供学习使用，作者不承担任何由此带来的法律风险和损失！
-
-# 特性
+# 👻特性
 
 - [x] 支持任意关键词采集
 - [x] 支持数据导出Excel
 - [x] 支持自定义上滑次数
 
-# 技术架构
+# ✨技术架构
 
 - Python3.6+
 - uiautomator2
 
-# 快速开始
+# 🚨快速开始
 
 ## 1、环境准备
 
@@ -42,7 +42,7 @@
 1. 将设备ID输入xianyu.py的`d = u2.connect("设备ID")`中
 2. 运行`python xianyu.py`即可进行采集，如需更改采集数据，可更改main函数keyword即可`main(keyword='餐饮券')`
 
-# 使用说明
+# 🍔使用说明
 
 1. 本次使用的是uiautomator2和USB真机调试，请打开手机USB调试模式并连接到电脑
 2. 本次只采集了每个商品的【标题、价格、图片】
@@ -57,7 +57,7 @@
 - 运行结果
   ![整体截图](example/result.png "运行结果")
 
-# 常见问题
+# 👻常见问题
 
 ## 错误：atxagent 下次必须通过adb启动
 
