@@ -6,6 +6,8 @@
 
 [特性](#特性) | [技术架构](#技术架构) | [快速开始](#快速开始) | [使用说明](#使用说明) | [免责声明](#免责声明) | [常见问题](#常见问题) | [学习交流](#学习交流)
 
+现在闲鱼出了网页版，基于uiautomator2的本项目可以废弃不用了，详情请使用[闲鱼网页版](https://www.goofish.com/)
+
 🚀「闲鱼APP数据爬虫」一个基于uiautomator2的闲鱼APP爬虫项目，严禁将所得数据商用！ 本项目只供学习使用，作者不承担任何由此带来的法律风险和损失！如果本项目对你有用，点个Start，方便回顾知识~
 <p align="center">
     <a target="_blank" href="https://www.python.org/downloads/release/python-3810/"><img src="https://img.shields.io/badge/Python-3.x-blue.svg" /></a>
