@@ -115,7 +115,7 @@
 
 # 学习交流
 
-> 扫码入群交流学习，如群二维码失效请加作者微信：FearlessMan888，备注：python群
+> 扫码入群交流学习，如群二维码失效请加作者微信：echo_python，备注：python群
 
 <img src="https://bigdata-1312829983.cos.ap-shanghai.myqcloud.com/temp/python_wechat.jpg" style="width:258px;height:300px;"></img>
 
